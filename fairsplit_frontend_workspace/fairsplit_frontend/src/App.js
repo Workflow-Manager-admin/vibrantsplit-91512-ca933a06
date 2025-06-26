@@ -832,34 +832,42 @@ export default function App() {
   // --------------- Main App Render --------------------------------------------
 
   return (
-    <div className="fairsplit-app">
-      <div className="main-content" style={{ paddingBottom: 68 }}>
-        {modalOpen && modalType === "expense" && (
-          <ExpenseModal
-            expense={selectedExpense}
-            people={people}
-            onSave={saveExpense}
-            onClose={() => {
-              setModalType(null);
-              setSelectedExpense(null);
-            }}
-          />
-        )}
-        {nav === "dashboard" && <Dashboard />}
-        {nav === "people" && <PeoplePage />}
-        {nav === "expenses" && <ExpensesPage />}
-        {nav === "add-expense" && (
-          <ExpenseModal
-            people={people}
-            onSave={saveExpense}
-            onClose={() => setNav("dashboard")}
-          />
-        )}
-        {/* Modal fade over main page for smoothness */}
-        {modalOpen && <div className="modal-bg-fade"></div>}
+    <>
+      {/* Vibrant blurred bg shapes for visual appeal */}
+      <div className="fairsplit-bg-shapes" aria-hidden="true">
+        <div className="fairsplit-bg-shape fairsplit-bg-accent1"></div>
+        <div className="fairsplit-bg-shape fairsplit-bg-accent2"></div>
+        <div className="fairsplit-bg-shape fairsplit-bg-accent3"></div>
       </div>
-      <BottomNav />
-      <div className="watermark-fs">FairSplit</div>
-    </div>
+      <div className="fairsplit-app">
+        <div className="main-content" style={{ paddingBottom: 68 }}>
+          {modalOpen && modalType === "expense" && (
+            <ExpenseModal
+              expense={selectedExpense}
+              people={people}
+              onSave={saveExpense}
+              onClose={() => {
+                setModalType(null);
+                setSelectedExpense(null);
+              }}
+            />
+          )}
+          {nav === "dashboard" && <Dashboard />}
+          {nav === "people" && <PeoplePage />}
+          {nav === "expenses" && <ExpensesPage />}
+          {nav === "add-expense" && (
+            <ExpenseModal
+              people={people}
+              onSave={saveExpense}
+              onClose={() => setNav("dashboard")}
+            />
+          )}
+          {/* Modal fade over main page for smoothness */}
+          {modalOpen && <div className="modal-bg-fade"></div>}
+        </div>
+        <BottomNav />
+        <div className="watermark-fs">FairSplit</div>
+      </div>
+    </>
   );
 }

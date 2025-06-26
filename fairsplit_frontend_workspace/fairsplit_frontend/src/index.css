@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg-light, #f8f9fa);
+  /* Remove default background to allow App.css effect to dominate */
+  background: transparent !important;
   overflow-x: hidden;
 }

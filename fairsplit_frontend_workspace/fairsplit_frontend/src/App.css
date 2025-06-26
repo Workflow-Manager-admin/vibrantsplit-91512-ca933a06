@@ -13,16 +13,65 @@
 }
 
 body, html {
-  background: var(--bg-light);
-  font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
   margin: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+  /* Gorgeous radiant multi-stop gradient with floating shapes for vibrance */
+  background:
+    linear-gradient(120deg, #f8fafc 0%, #f1e6ff 22%, #ffe6cc 60%, #e7feff 100%),
+    radial-gradient(ellipse at 80% 8%, #f6cfd3d9 0 36%, #ffffff00 70%),
+    radial-gradient(circle at 30% 110%, #b69fff40 0 38%, #ffffff00 72%),
+    radial-gradient(circle at 92% 92%, #A5F3FC31 0 55%, #ffffff00 95%);
+  background-blend-mode: screen;
+  /* Overflow hidden helps shape effects, but allow scroll for modal overlays */
+  overflow-x: hidden;
+  transition: background 0.6s;
+  position: relative;
+}
+.fairsplit-bg-shapes {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+.fairsplit-bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  mix-blend-mode: lighten;
+  opacity: 0.40;
+  animation: floatup 13s infinite linear alternate;
+}
+.fairsplit-bg-accent1 {
+  width: 360px; height: 320px;
+  top: -80px; left: -120px;
+  background: linear-gradient(140deg, #7c3aedcc 40%, #06b6d424 100%);
+}
+.fairsplit-bg-accent2 {
+  width: 260px; height: 200px;
+  top: 60%; right: -70px;
+  background: linear-gradient(120deg, #f59e4299 0 68%, #ffe69611 100%);
+  animation-delay: 1.8s;
+}
+.fairsplit-bg-accent3 {
+  width: 160px; height: 160px;
+  left: 70vw; bottom: 140px;
+  background: linear-gradient(140deg, #06b6d463 40%, #7c3aed19 98%);
+  animation-delay: 3.8s;
+}
+
+@keyframes floatup {
+  to { transform: translateY(-30px) scale(1.08); opacity: 0.45;}
 }
 
 .fairsplit-app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
+
 
 .main-content {
   flex: 1;
