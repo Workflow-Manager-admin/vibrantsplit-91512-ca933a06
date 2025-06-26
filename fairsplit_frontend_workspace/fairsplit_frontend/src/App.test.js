@@ -4,8 +4,9 @@ import App from "./App";
 // PUBLIC_INTERFACE
 test("renders FairSplit dashboard and allows navigation to people/expenses", () => {
   render(<App />);
-  // Dashboard
-  expect(screen.getByText(/FairSplit/i)).toBeInTheDocument();
+  // Dashboard: Check the header brand title only (not watermark)
+  const heading = screen.getByRole("heading", { level: 1, name: /FairSplit/i });
+  expect(heading).toBeInTheDocument();
   expect(screen.getByText(/Real-time Expense Sharing/i)).toBeInTheDocument();
 
   // Nav to people
